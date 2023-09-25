@@ -1,0 +1,23 @@
+{
+    "scheme": "https",
+    "host": "newsapi.org",
+    "path": "/v1/articles",
+    "delimiter": "~",
+    "outputFileName": "top_headline_", 
+    "testMode": "false",
+    "testFile": "newsTest.json",
+    "parameters": [
+        {
+        "key": "source",
+        "value": "cnn"
+        },
+        {
+            "key": "sortBy",
+            "value": "top"
+        },
+        {
+            "key": "apiKey",
+            "value": "2a4639109b424bd3970e2fdf00fa54de"
+        }
+    ]
+}
