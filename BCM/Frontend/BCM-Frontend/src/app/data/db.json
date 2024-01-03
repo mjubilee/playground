@@ -1,0 +1,61 @@
+{
+  "truck": [
+    {
+      "truckName": "Tacoma",
+      "truckModel": "Toyota",
+      "id": 1
+    },
+    {
+      "model": "Titan",
+      "status": "Maintenance",
+      "name": "Nissan",
+      "id": 2
+    }
+  ],
+  "truck_status": [
+    {
+      "name": "Loading",
+      "description": "Loading at warehouse",
+      "id": 1
+    },
+    {
+      "name": "Outbound",
+      "description": "Outbound for deliveries",
+      "id": 2
+    }
+  ],
+  "driver": [
+    {
+      "firstName": "mahalunggu",
+      "lastName": "Jubilee",
+      "id": 1
+    },
+    {
+      "firstName": "landon",
+      "lastName": "j",
+      "id": 2
+    },
+    {
+      "firstName": "Mahalunggu",
+      "lastName": "Jubilee",
+      "address": {
+        "street": "724 Colinet Street",
+        "city": "Coquitlam"
+      },
+      "id": 3
+    },
+    {
+      "firstName": "Mahalunggu",
+      "lastName": "Jubilee",
+      "address": {
+        "street": "724 Colinet Street",
+        "city": "Coquitlam"
+      },
+      "aliases": [
+        "aa",
+        "ss"
+      ],
+      "id": 4
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<p>Truck Status</p>
+
+  {{ truckStatusData | json }}
+
+<div [hidden]="!isNew">
+    <form #truckStatusForm="ngForm" (ngSubmit)="onSubmit(); truckStatusForm.reset()">
+        <div class="form-group">
+            <label for="truckStatusName">Name</label>
+            <input type="text" class="form-control" id="truckStatusName" required [(ngModel)]="truckStatusData.name" name="truckStatusName" #truckStatusName="ngModel" minlength="3" maxlength="20">
+            <div [hidden]="truckStatusName.valid || truckStatusName.pristine">
+                <div *ngIf="truckStatusName.errors?.['required']" class="alert alert-danger">Status name is required.</div>
+                <div *ngIf="truckStatusName.errors?.['minlength']" class="alert alert-danger">Status name must be at least 3 characters long.</div>
+                <div *ngIf="truckStatusName.errors?.['maxlength']" class="alert alert-danger">Status name must be less than 20 characters long.</div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="truckDescription">Description</label>
+            <input type="text" class="form-control" id="truckDescription" required [(ngModel)]="truckStatusData.description" name="truckDescription" #truckDescription="ngModel">
+            <div [hidden]="truckDescription.valid || truckDescription.pristine" class="alert alert-danger">Status description is required</div>
+        </div>
+           
+        <button type="submit" class="btn btn-success" [disabled]="!truckStatusForm.form.valid">Save</button>
+    </form>
+</div>
+
+<div [hidden]="isNew">
+    <div class="row">
+        <div class="col-xs-3">Name</div>
+        <div class="col-xs-9">{{ truckStatusData.name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">Model</div>
+        <div class="col-xs-9">{{ truckStatusData.description }}</div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="isNew = false; isEdit = true">Edit</button>&nbsp;
+    <button type="button" class="btn btn-primary" (click)="deleteTruckStatus()">Delete</button>
+</div>
+
+
+  

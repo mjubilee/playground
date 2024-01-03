@@ -1,0 +1,63 @@
+<p>Value: {{ driverProfile.value | json}}</p>
+<p>Form Status: {{ driverProfile.status }}</p>
+
+<form [formGroup]="driverProfile" (ngSubmit)="onSubmit(); driverProfile.reset()">
+    <div class="form-group">
+        <label for="driverFirstName">First Name</label>
+        <input type="text" class="form-control" id="driverFirstName" formControlName="firstName">
+
+        <div [hidden]="firstName.valid || firstName.pristine">
+          <div *ngIf="firstName.errors?.['required']" class="alert alert-danger">First name is required.</div>
+          <div *ngIf="firstName.errors?.['minlength']" class="alert alert-danger">First name must be at least 3 characters long.</div>
+          <div *ngIf="firstName.errors?.['maxlength']" class="alert alert-danger">First name must be less than 20 characters long.</div>
+      </div>
+
+    </div>
+    
+    <div class="form-group">
+        <label for="driverLastName">Last Name</label>
+        <input type="text" class="form-control" id="driverLastName" formControlName="lastName">
+        
+        <div [hidden]="lastName.valid || lastName.pristine">
+          <div *ngIf="lastName.errors?.['required']" class="alert alert-danger">Last name is required.</div>
+          <div *ngIf="lastName.errors?.['passwordStrength']" class="alert alert-danger">Last Name must have lower case, upper case and numeric characters.</div> 
+          <div *ngIf="lastName.errors?.['match']" class="alert alert-danger">Last Name and First name can not be the same</div> 
+      </div>
+    </div>
+
+    <div formGroupName="address">
+        <h2>Address</h2>
+        <div class="form-group">
+            <label for="street">Street: </label>
+            <input id="street" class="form-control" type="text" formControlName="street">
+        </div>
+
+        <div class="form-group">
+            <label for="city">City: </label>
+            <input id="city" class="form-control" type="text" formControlName="city">
+        </div>
+      
+      </div>
+
+      <div [hidden]="lastName.valid">
+        <div *ngIf="lastName.errors?.['match']" class="alert alert-danger">Last Name and First name can not be the same</div> 
+    </div>
+
+    <button type="submit" [disabled]="!driverProfile.valid">Save</button>
+    <!-- <button type="button" (click)="updateProfile()">Update Profile</button> -->
+
+    
+    <div formArrayName="aliases">
+      <h2>Aliases</h2>
+      <button type="button" (click)="addAlias()">+ Add another alias</button>
+    
+      <div *ngFor="let alias of aliases.controls; let i=index">
+        <!-- The repeated alias template -->
+        <label for="alias-{{ i }}">Alias:</label>
+        <input id="alias-{{ i }}" type="text" [formControlName]="i">
+      </div>
+    </div>
+
+
+
+</form>
